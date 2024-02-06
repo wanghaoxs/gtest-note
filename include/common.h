@@ -9,7 +9,7 @@
 #include <sstream>
 #include <thread>
 
-//common
+// common
 #include "util.h"
 
 // json.
@@ -17,3 +17,10 @@
 
 // openmp.
 #include <omp.h>
+#include <sys/stat.h>
+#include <sys/sysinfo.h>
+#include <sys/types.h>
+
+// cuda interface.
+#include "cuda.h"
+#include "cuda_runtime.h"

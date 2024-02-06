@@ -28,5 +28,16 @@ class Util {
         str = ss.str();
         return str;
     }
+
+    static int64_t get_update_time(std::string filename)
+    {
+        struct stat result;
+        if(stat(filename.c_str(), &result)==0)
+        {
+            auto mod_time = result.st_mtime;
+            return mod_time;
+        }
+        return -1;
+    }
 };
 #endif  // GTEST_TOOL_UTIL_H
