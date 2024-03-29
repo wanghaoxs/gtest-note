@@ -23,29 +23,22 @@ TEST(gtest, openmp) {
 }
 
 TEST(gtest, openmp1) {
-    std::cout << "gtest" << std::endl;
-    int channels = 2;
+    int channels = 3;
     omp_set_num_threads(channels);
 #pragma omp parallel default(none) shared(std::cout)
     {
-        std::cout << "main : " + std::to_string(omp_get_thread_num()) << std::endl;
         int omp_thread_index = omp_get_thread_num();
-        int current_thread_index = omp_get_thread_num() / 3 + 1;
         if (omp_thread_index % 3 == 0) {
-            std::string info = "current_thread_index = " + std::to_string(current_thread_index) + "\n";
+            std::this_thread::sleep_for(std::chrono::seconds(10));
+            std::string info = "current_thread_index = " + std::to_string(omp_thread_index) + "\n";
             std::cout << info << std::endl;
-            //            ThreadTest thread1;
-            //            thread1.print_tid();
         } else if (omp_thread_index % 3 == 1) {
-            std::string info = "current_thread_index = " + std::to_string(current_thread_index) + "\n";
+            std::string info = "current_thread_index = " + std::to_string(omp_thread_index) + "\n";
             std::cout << info << std::endl;
-            //            ThreadTest thread2;
-            //            thread2.print_tid();
         } else if (omp_thread_index % 3 == 2) {
-            std::string info = "current_thread_index = " + std::to_string(current_thread_index) + "\n";
+            std::string info = "current_thread_index = " + std::to_string(omp_thread_index) + "\n";
             std::cout << info << std::endl;
-            //            ThreadTest thread3;
-            //            thread3.print_tid();
         }
     }
+    std::cout << "end!!!!!!!!!" << std::endl;
 }
