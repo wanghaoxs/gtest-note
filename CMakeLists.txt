@@ -25,25 +25,6 @@ if(POLICY CMP0076)
     cmake_policy(SET CMP0076 NEW)
 endif()
 
-#-----------------------------------------------------------------------------------------------------------------------
-# 3pp.
-
-set(CUDA_INCLUDE "/usr/local/corex/include")
-
-find_library(CUDA_LIBRARY cuda /usr/local/corex/lib64 NO_DEFAULT_PATH)
-find_library(CUDART_LIBRARY cudart /usr/local/corex/lib64 NO_DEFAULT_PATH)
-
-find_library(DL_LIBRARY dl)
-
-
-message("==================================")
-message("CUDA_INCLUDE=${CUDA_INCLUDE}")
-message("==================================")
-message("CUDA_LIBRARY=${CUDA_LIBRARY}")
-message("CUDART_LIBRARY=${CUDART_LIBRARY}")
-message("==================================")
-message("DL_LIBRARY=${DL_LIBRARY}")
-message("==================================")
 
 #-----------------------------------------------------------------------------------------------------------------------
 # set target.
@@ -52,7 +33,6 @@ target_include_directories(runTests PUBLIC
         gtest
         gtest/include
         include
-        ${CUDA_INCLUDE}
         )
 file(GLOB_RECURSE TEST_SRCS src/*.cpp)
 target_sources(runTests PUBLIC
@@ -60,8 +40,5 @@ target_sources(runTests PUBLIC
         gtest/src/gtest-all.cc
         ${TEST_SRCS}
         )
-target_link_libraries(runTests PUBLIC
-        ${CUDA_LIBRARY}
-        ${CUDART_LIBRARY}
-        ${DL_LIBRARY}
+target_link_libraries(runTests.exe PUBLIC
         )
