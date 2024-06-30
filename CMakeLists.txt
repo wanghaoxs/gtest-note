@@ -40,5 +40,5 @@ target_sources(runTests PUBLIC
         gtest/src/gtest-all.cc
         ${TEST_SRCS}
         )
-target_link_libraries(runTests.exe PUBLIC
+target_link_libraries(runTests PUBLIC
         )

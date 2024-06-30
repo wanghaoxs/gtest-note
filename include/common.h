@@ -20,7 +20,3 @@
 #include <sys/stat.h>
 #include <sys/sysinfo.h>
 #include <sys/types.h>
-
-// cuda interface.
-#include "cuda.h"
-#include "cuda_runtime.h"
